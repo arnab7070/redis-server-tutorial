@@ -2,11 +2,11 @@ import { NextResponse } from "next/server";
 import axios from 'axios';
 import { createClient } from 'redis';
 const client = createClient({
-    username: 'developer',
-    password: 'developer@Redis24',
+    username: process.env.REDIS_USERNAME,
+    password: process.env.REDIS_PASSWORD,
     socket: {
-        host: 'redis-11860.c264.ap-south-1-1.ec2.cloud.redislabs.com',
-        port: 11860
+        host: process.env.REDIS_HOST,
+        port: process.env.REDIS_PORT
     }
 });
 client.on('error', err => console.log('Redis Client Error', err));
